@@ -5,7 +5,7 @@ dependencies:
   - python=3.10
   - pip
   - pip:
-    - "fastapi[all]"
+    - fastapi[all]
     - uvicorn
     - openai
     - python-dotenv
