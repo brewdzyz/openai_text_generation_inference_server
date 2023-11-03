@@ -8,12 +8,7 @@ client = TestClient(app)
 
 class MockStream:
     async def __aiter__(self):
-        yield {
-            'choices': [{
-                'delta': {'content': 'Test response'},
-                'finish_reason': None
-            }]
-        }
+        yield 'data:{"token":{"id":123456,"text":"Test response","logprob":0,"special":False},"generated_text":null,"details":null}\n\n'
 
 @pytest.mark.asyncio
 @patch("server.get_openai_stream_data", return_value=MockStream())
@@ -33,3 +28,4 @@ async def test_generate_stream(mock_get_openai_stream_data):
 
     assert response.status_code == 200
     assert "Test response" in response.text
+
