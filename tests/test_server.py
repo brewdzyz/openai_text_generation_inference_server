@@ -6,10 +6,10 @@ from unittest.mock import AsyncMock, patch
 
 client = TestClient(app)
 
-@patch("server.openai.ChatCompletion.acreate", new_callable=AsyncMock)
-def test_generate_stream(mock_acreate):
-    mock_acreate.return_value = AsyncMock()
-    mock_acreate.return_value.__aiter__.return_value = iter([{
+@pytest.mark.asyncio
+@patch("server.get_openai_stream_data", new_callable=AsyncMock)
+async def test_generate_stream(mock_get_openai_stream_data):
+    mock_get_openai_stream_data.return_value = iter([{
         'choices': [{
             'delta': {'content': 'Test response'},
             'finish_reason': None
@@ -31,4 +31,3 @@ def test_generate_stream(mock_acreate):
 
     assert response.status_code == 200
     assert "Test response" in response.text
-
