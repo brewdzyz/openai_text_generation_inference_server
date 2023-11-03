@@ -3,10 +3,11 @@ channels:
   - defaults
 dependencies:
   - python=3.10
-  - fastapi
-  - uvicorn
-  - openai
-  - pytest
-  - flake8
+  - pip
   - pip:
+    - "fastapi[all]"
+    - uvicorn
+    - openai
     - python-dotenv
+    - pytest
+    - flake8
