@@ -1,4 +1,6 @@
-fastapi
-uvicorn[standard]
+fastapi[all]
+uvicorn
 openai
 python-dotenv
+pytest
+flake8
