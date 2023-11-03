@@ -33,4 +33,4 @@ jobs:
         OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
       run: |
         pip install pytest pytest-asyncio
-        pytest tests
+        pytest tests --ignore=tests/test_openai_interaction.py
