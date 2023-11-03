@@ -1,0 +1,12 @@
+name: GPTInferenceServer
+channels:
+  - defaults
+dependencies:
+  - python=3.10
+  - fastapi
+  - uvicorn
+  - openai
+  - pytest
+  - flake8
+  - pip:
+    - python-dotenv
